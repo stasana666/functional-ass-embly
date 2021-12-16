@@ -1,0 +1,2 @@
+#define CONCATINATE_HELPER(x, y) x##y
+#define CONCATINATE(x, y) CONCATINATE_HELPER(x, y)
