@@ -1,5 +1,7 @@
 #include "../../core/core.S"
 
+#include "../constants.S"
+
 #define PRINT_STRING_HELPER(message, unique_id)                                                                     \
     .data                                                                                                           ; \
     CONCATINATE(unique_string_begin_id_, unique_id):                                                                ; \
