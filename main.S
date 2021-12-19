@@ -1,13 +1,13 @@
 #include "lib.S"
 
-MAIN (
-    PRINT_STRING("Hello, world_000!\n");
-    PRINT_STRING("Hello, world_001!\n");
-    PRINT_STRING("Hello, world_010!\n");
-    PRINT_STRING("Hello, world_011!\n");
-    PRINT_STRING("Hello, world_100!\n");
-    PRINT_STRING("Hello, world_101!\n");
-    PRINT_STRING("Hello, world_110!\n");
-    PRINT_STRING("Hello, world_111!\n");
+CREATE_FUNCTION (KalekaKek,
+    PRINT_INT32(zxc);
+    SUB(zxc, 7);
+    CALL_FUNCTION(KalekaKek);
 )
 
+MAIN (
+    CREATE_GLOBAL_INT32(zxc);
+    SET_INT32(zxc, 1000);
+    CALL_FUNCTION(KalekaKek);
+)

@@ -1,1 +1,1 @@
-#define INT(x) CONCATINATE($, x)
+#define INT(x) CONCATENATE($, x)
