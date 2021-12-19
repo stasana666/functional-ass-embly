@@ -18,30 +18,32 @@
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
     pop  %eax
 
-#define AND(var, value)                                           \
+#define MUL(var, value)                                           \
     push %eax                                                   ; \
+    push %edx                                                   ; \
     mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
-    and  INT(value), %eax                                       ; \
+    imul INT(value)                                             ; \
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %eax
+    pop  %edx                                                   ; \
+    pop  %eax                                                   ; \
 
-#define OR(var, value)                                           \
+#define DIV(var, value)                                           \
     push %eax                                                   ; \
+    push %edx                                                   ; \
     mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
-    or   INT(value), %eax                                       ; \
+    cdq                                                         ; \
+    idiv INT(value)                                             ; \
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %eax
+    pop  %edx                                                   ; \
+    pop  %eax                                                   ; \
 
-#define XOR(var, value)                                           \
+#define MOD(var, value)                                           \
     push %eax                                                   ; \
+    push %edx                                                   ; \
     mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
-    xor  INT(value), %eax                                       ; \
-    mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %eax
+    cdq                                                         ; \
+    idiv INT(value)                                             ; \
+    mov  %edx, CONCATENATE(unique_global_var_int32_, var)       ; \
+    pop  %edx                                                   ; \
+    pop  %eax                                                   ; \
 
-#define NOT(var, value)                                           \
-    push %eax                                                   ; \
-    mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
-    neg  %eax                                                   ; \
-    mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %eax
