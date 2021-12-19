@@ -2,7 +2,7 @@
 #include "io/io.S"
 #include "functions/functions.S"
 #include "variables/variables.S"
-#include "math/base_operations.S"
+#include "math/math.S"
 
 #define MAIN(...)                                                                                                   \
     .global main                                                                                                    ; \
