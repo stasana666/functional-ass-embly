@@ -25,7 +25,7 @@
     imul INT(value)                                             ; \
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
     pop  %edx                                                   ; \
-    pop  %eax                                                   ; \
+    pop  %eax
 
 #define DIV(var, value)                                           \
     push %eax                                                   ; \
@@ -35,7 +35,7 @@
     idiv INT(value)                                             ; \
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
     pop  %edx                                                   ; \
-    pop  %eax                                                   ; \
+    pop  %eax
 
 #define MOD(var, value)                                           \
     push %eax                                                   ; \
@@ -45,5 +45,5 @@
     idiv INT(value)                                             ; \
     mov  %edx, CONCATENATE(unique_global_var_int32_, var)       ; \
     pop  %edx                                                   ; \
-    pop  %eax                                                   ; \
+    pop  %eax
 
