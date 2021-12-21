@@ -1,9 +1,9 @@
-#define SYSCALL_EXIT(code)                                                                                          \
+#define SYSCALL_EXIT(code)                                                                                            \
     mov INT(SYS_exit), %eax                                                                                         ; \
     mov INT(code), %ebx                                                                                             ; \
     int $0x80
 
-#define SYSCALL_WRITE(begin, end)                                                                                   \
+#define SYSCALL_WRITE(begin, end)                                                                                     \
     PUSH_REGS                                                                                                       ; \
     mov INT(SYS_write), %eax                                                                                        ; \
     mov INT(STDOUT), %ebx                                                                                           ; \

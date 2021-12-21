@@ -1,5 +1,3 @@
-#include <../core/core.h>
-
 #define SET_INT32(var, value)                                     \
     push %eax                                                   ; \
     mov  INT(value), %eax                                       ; \
