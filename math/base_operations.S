@@ -1,3 +1,5 @@
+#include <../core/core.h>
+
 #define SET_INT32(var, value)                                     \
     push %eax                                                   ; \
     mov  INT(value), %eax                                       ; \
@@ -19,31 +21,28 @@
     pop  %eax
 
 #define MUL(var, value)                                           \
-    push %eax                                                   ; \
-    push %edx                                                   ; \
+    PUSH_REGS                                                   ; \
     mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
-    imul INT(value)                                             ; \
+    mov  INT(value), %ebx                                       ; \
+    imul %ebx                                                   ; \
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %edx                                                   ; \
-    pop  %eax
+    POP_REGS
 
 #define DIV(var, value)                                           \
-    push %eax                                                   ; \
-    push %edx                                                   ; \
+    PUSH_REGS                                                   ; \
     mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
     cdq                                                         ; \
-    idiv INT(value)                                             ; \
+    mov  INT(value), %ebx                                       ; \
+    idiv %ebx                                                   ; \
     mov  %eax, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %edx                                                   ; \
-    pop  %eax
+    POP_REGS
 
 #define MOD(var, value)                                           \
-    push %eax                                                   ; \
-    push %edx                                                   ; \
+    PUSH_REGS                                                   ; \
     mov  CONCATENATE(unique_global_var_int32_, var), %eax       ; \
     cdq                                                         ; \
-    idiv INT(value)                                             ; \
+    mov  INT(value), %ebx                                       ; \
+    idiv %ebx                                                   ; \
     mov  %edx, CONCATENATE(unique_global_var_int32_, var)       ; \
-    pop  %edx                                                   ; \
-    pop  %eax
+    POP_REGS
 
